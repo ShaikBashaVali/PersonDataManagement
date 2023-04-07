@@ -149,6 +149,31 @@ namespace PersonDataManagement
                 return false;
             }
         }
+        public static bool SkipRecordLessThan60(List<Person> list)
+        {
+            try
+            {
+                AddPerson(list);
+                var skipRecord = list.FindAll(a => a.age > 60);
+                if (skipRecord != null)
+                {
+                    Console.WriteLine("\n-----Record which age is greater than 60-----");
+                    IterateThroughList(skipRecord);
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("No data available ");
+                    return false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
         public static void IterateThroughList(List<Person> list)
         {
             foreach (Person person in list)
