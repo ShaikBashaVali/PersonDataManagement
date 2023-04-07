@@ -174,6 +174,36 @@ namespace PersonDataManagement
                 return false;
             }
         }
+        /// <summary>
+        /// UC7-Remove specific Name from list
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="Name"></param>
+        public static bool RemoveSpecificName(List<Person> list, string Name)
+        {
+            try
+            {
+                AddPerson(list);
+                if (list.Count > 0)
+                {
+                    var removeName = list.RemoveAll(x => x.name.Contains(Name));
+                    Console.WriteLine("\n------Removed Id is : {0} ---", removeName);
+                    Console.WriteLine("\n-------After removing the record from list-----------\n");
+                    IterateThroughList(list);
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("No data present in list");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
         public static void IterateThroughList(List<Person> list)
         {
             foreach (Person person in list)
