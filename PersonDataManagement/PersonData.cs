@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PersonDataManagement
 {
-    class PersonData
+    public class PersonData
     {
 
         /// <summary>
@@ -102,6 +102,32 @@ namespace PersonDataManagement
                 Console.WriteLine(ex.Message);
                 return false;
             }
+        }
+        public static bool CalculateAverageAge(List<Person> list)
+        {
+            Console.WriteLine("\n----------Average age in list-----------\n");
+            try
+            {
+                AddPerson(list);
+                if (list.Count > 0)
+                {
+                    double avgAge = list.Average(a => a.age);
+                    Console.WriteLine("Average age value is : {0} ", avgAge);
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("No data present in list");
+                    return false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+
         }
         public static void IterateThroughList(List<Person> list)
         {
