@@ -129,6 +129,26 @@ namespace PersonDataManagement
             }
 
         }
+        public static bool SearchingSpecificName(List<Person> list, string Name)
+        {
+            try
+            {
+                AddPerson(list);
+                var person = list.Find(a => a.name.Equals(Name));
+                if (person != null)
+                {
+                    Console.WriteLine("\n-----Found the person--------\n");
+                    Console.WriteLine("SSN : {0} Name : {1} Address : {2} Age : {3}  ", person.SSN, person.name, person.address, person.age);
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
         public static void IterateThroughList(List<Person> list)
         {
             foreach (Person person in list)
