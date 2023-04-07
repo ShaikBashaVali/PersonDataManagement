@@ -8,6 +8,7 @@ namespace PersonDataManagement
 {
     class PersonData
     {
+
         /// <summary>
         /// UC1-Adding Person details and display it. 
         /// </summary>
@@ -69,7 +70,39 @@ namespace PersonDataManagement
             }
             return false;
         }
+        /// <summary>
+        /// UC3-Retrieve teenage records
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static bool RetrieveTeenageRecords(List<Person> list)
+        {
+            Console.WriteLine("\n----------Retrieve Records which is Age between 13 to 18-----------\n");
+            try
+            {
+                AddPerson(list);
 
+                if (list.Count > 0)
+                {
+                    var ageResult2 = list.FindAll(a => a.age > 13 && a.age < 18);
+
+
+                    IterateThroughList(ageResult2);
+                    return true;
+
+                }
+                else
+                {
+                    Console.WriteLine("No data present in list");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
         public static void IterateThroughList(List<Person> list)
         {
             foreach (Person person in list)
